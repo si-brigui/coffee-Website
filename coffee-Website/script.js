@@ -1,32 +1,38 @@
-// Responsive menu toggle
-const menuOpenButton = document.querySelector("#menu-open-button");
-const navMenu = document.querySelector(".nav-menu");
+// Ensure the DOM is fully loaded before running the script
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Swiper
+  const swiper = new Swiper(".swiper", {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
 
-menuOpenButton.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-});
+  // Add event listeners for buttons (example)
+  const orderNowButton = document.querySelector(".order-now"); // Replaced example-button with order-now
+  const contactUsButton = document.querySelector(".contact-us"); // Added contact-us button for another example
 
-const swiper = new swiper(".slider-container", {
-  loop: true,
-  grabCursor: true,
-  spaceBetween: 25,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    768: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
-  },
+  // Ensure both buttons exist before attaching event listeners
+  if (orderNowButton) {
+    orderNowButton.addEventListener("click", () => {
+      console.log("Order Now button clicked!");
+      // Additional code for ordering functionality
+    });
+  } else {
+    console.error("Order Now button not found in the DOM!");
+  }
+
+  if (contactUsButton) {
+    contactUsButton.addEventListener("click", () => {
+      console.log("Contact Us button clicked!");
+      // Additional code for contacting functionality
+    });
+  } else {
+    console.error("Contact Us button not found in the DOM!");
+  }
 });
